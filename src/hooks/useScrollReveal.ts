@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 /**
- * Adds the `is-visible` class to elements with the `reveal` class
- * when they scroll into view. Uses IntersectionObserver and respects
- * reduced-motion automatically via CSS.
+ * Adds the `is-visible` class to `.reveal` and `.reveal-scale` elements as they scroll into view.
+ * Re-runs whenever `key` changes, so content on a newly routed page is observed too.
  */
-export function useScrollReveal<T extends HTMLElement = HTMLDivElement>() {
+export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(key: string) {
   const containerRef = useRef<T | null>(null);
 
   useEffect(() => {
@@ -39,33 +38,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>() {
       observer.disconnect();
       window.clearTimeout(visibilityFallback);
     };
-  }, []);
+  }, [key]);
 
   return containerRef;
-}
-
-/** Tracks the currently visible section id for nav highlighting. */
-export function useActiveSection(ids: string[]) {
-  const [active, setActive] = useState(ids[0] ?? '');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 1] }
-    );
-
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [ids]);
-
-  return active;
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowUp, Github, Mail } from 'lucide-react';
 import { navLinks, profile } from '@/content';
 
@@ -8,18 +9,20 @@ export default function Footer() {
     <footer className="relative border-t border-navy-600/50 bg-navy-950">
       <div className="container-px py-16">
         <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
-          {/* Brand */}
           <div className="max-w-sm">
-            <a href="#home" className="group flex items-center gap-3">
-              <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-gold-400/40 bg-navy-800 transition-all duration-300 group-hover:border-gold-400 group-hover:shadow-gold-soft">
+            <Link to="/" className="group flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gold-400/40 bg-navy-800 transition-all duration-300 group-hover:border-gold-400 group-hover:shadow-gold-soft">
                 <img
                   src="/Futuristic_Gold_SmartDevs_Emblem.png"
-                  alt="Smartdevs logo"
+                  alt=""
+                  width={44}
+                  height={44}
+                  loading="lazy"
                   className="h-full w-full object-contain"
                 />
               </span>
               <span className="font-display text-lg font-bold text-ink">{profile.name}</span>
-            </a>
+            </Link>
             <p className="mt-5 text-sm leading-relaxed text-ink-muted text-pretty">
               {profile.tagline} Software developer passionate about problem-solving, clean code, and
               continuous learning.
@@ -28,7 +31,7 @@ export default function Footer() {
               <a
                 href={`mailto:${profile.email}`}
                 aria-label="Email"
-                className="grid h-10 w-10 place-items-center rounded-xl border border-navy-600 bg-navy-800/60 text-ink-muted transition-all hover:border-gold-400/60 hover:text-gold-300 hover:-translate-y-0.5"
+                className="grid h-10 w-10 place-items-center rounded-xl border border-navy-600 bg-navy-800/60 text-ink-muted transition-all hover:-translate-y-0.5 hover:border-gold-400/60 hover:text-gold-300"
               >
                 <Mail size={18} />
               </a>
@@ -36,7 +39,7 @@ export default function Footer() {
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label="View Smartdevs on GitHub"
+                aria-label="GitHub repository (opens in a new tab)"
                 className="grid h-10 w-10 place-items-center rounded-xl border border-navy-600 bg-navy-800/60 text-ink-muted transition-all hover:-translate-y-0.5 hover:border-gold-400/60 hover:text-gold-300"
               >
                 <Github size={18} />
@@ -44,24 +47,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nav links */}
           <div>
             <h3 className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold-400">Navigation</h3>
             <ul className="mt-5 space-y-3">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="link-underline text-sm text-ink-muted transition-colors hover:text-ink"
-                  >
+                <li key={link.to}>
+                  <Link to={link.to} className="link-underline text-sm text-ink-muted transition-colors hover:text-ink">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Connect */}
           <div>
             <h3 className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold-400">Connect</h3>
             <ul className="mt-5 space-y-3">
@@ -80,6 +78,11 @@ export default function Footer() {
                   GitHub repository
                 </a>
               </li>
+              <li>
+                <Link to="/contact" className="link-underline text-sm text-ink-muted hover:text-ink">
+                  Send a message
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -91,16 +94,15 @@ export default function Footer() {
             &copy; {year} {profile.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <p className="font-mono text-xs text-ink-dim">
-              Built with React, TypeScript &amp; Tailwind CSS
-            </p>
-            <a
-              href="#home"
+            <p className="font-mono text-xs text-ink-dim">Built with React, TypeScript &amp; Tailwind CSS</p>
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="group inline-flex items-center gap-2 rounded-full border border-navy-600 bg-navy-800/60 px-4 py-2 text-xs font-medium text-ink-muted transition-all hover:border-gold-400/50 hover:text-gold-100"
             >
               Back to top
               <ArrowUp size={14} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
-            </a>
+            </button>
           </div>
         </div>
       </div>

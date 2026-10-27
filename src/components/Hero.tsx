@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight, FolderGit2, Sparkles } from 'lucide-react';
 import { hero, profile } from '@/content';
 
@@ -42,7 +43,7 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden pt-36 pb-24 md:pt-40">
+    <section className="relative min-h-screen overflow-hidden pt-36 pb-24 md:pt-40">
       {/* Background layers */}
       <div className="absolute inset-0 bg-navy-radial" />
       <div className="absolute inset-0 bg-grid-faint bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_72%)]" />
@@ -69,13 +70,13 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4 reveal" style={{ ['--reveal-delay' as string]: '240ms' }}>
-            <a href={hero.primaryCta.href} className="btn-gold group">
+            <Link to={hero.primaryCta.to} className="btn-gold group">
               {hero.primaryCta.label}
               <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
-            <a href={hero.secondaryCta.href} className="btn-ghost">
+            </Link>
+            <Link to={hero.secondaryCta.to} className="btn-ghost">
               {hero.secondaryCta.label}
-            </a>
+            </Link>
           </div>
 
           {/* Honest stats */}

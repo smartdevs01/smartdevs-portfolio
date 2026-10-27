@@ -1,32 +1,25 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
-import Services from '@/components/Services';
-import Journey from '@/components/Journey';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { Route, Routes } from 'react-router-dom';
+import SiteLayout from '@/components/SiteLayout';
+import HomePage from '@/pages/HomePage';
+import AboutPage from '@/pages/AboutPage';
+import ProjectsPage from '@/pages/ProjectsPage';
+import ProjectDetailPage from '@/pages/ProjectDetailPage';
+import SkillsPage from '@/pages/SkillsPage';
+import ContactPage from '@/pages/ContactPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
-function App() {
-  const ref = useScrollReveal<HTMLDivElement>();
-
+export default function App() {
   return (
-    <div ref={ref} className="relative min-h-screen bg-navy-950">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Services />
-        <Journey />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<SiteLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="projects" element={<ProjectsPage />} />
+        <Route path="projects/:slug" element={<ProjectDetailPage />} />
+        <Route path="skills" element={<SkillsPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

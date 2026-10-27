@@ -1,6 +1,6 @@
 /**
  * Central, editable content for the portfolio.
- * Update values here to change text across the site — no code digging needed.
+ * Update values here to change text across the site. Items marked PENDING need your input.
  */
 
 export const profile = {
@@ -9,32 +9,26 @@ export const profile = {
   role: 'Software Developer & Aspiring Software Engineer',
   tagline: 'Building practical, reliable, and meaningful digital solutions.',
   email: 'smartsavage28@gmail.com',
-  githubAvailable: true,
   github: 'https://github.com/smartdevs01/smartdevs-portfolio.git',
-  linkedinAvailable: false,
-  linkedin: '',
-  social: [
-    { label: 'Email', href: 'mailto:smartsavage28@gmail.com', icon: 'mail' as const },
-  ],
 };
 
 export const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Services', href: '#services' },
-  { label: 'Journey', href: '#journey' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Projects', to: '/projects' },
+  { label: 'Skills & Services', to: '/skills' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export const hero = {
   headline: 'Software Developer & Aspiring Software Engineer',
   subtext:
     "I'm Smartdevs, a passionate learner building my skills in software development, Java programming, and problem-solving. My goal is to create practical, reliable, and meaningful digital solutions while growing into a skilled software engineer.",
-  primaryCta: { label: 'Explore My Projects', href: '#projects' },
-  secondaryCta: { label: 'Contact Me', href: '#contact' },
+  primaryCta: { label: 'Explore My Projects', to: '/projects' },
+  secondaryCta: { label: 'About Me', to: '/about' },
 };
+
+export const PENDING = 'PENDING';
 
 export const about = {
   paragraphs: [
@@ -47,38 +41,69 @@ export const about = {
     { title: 'Learning by Building', body: 'Every project is a chance to learn something new and concrete.' },
     { title: 'Honest & Growing', body: "I'm upfront that I'm early in my journey — and committed to growing." },
   ],
+  interests: [
+    'Java and object-oriented program design',
+    'Algorithms and structured problem-solving',
+    'Web development with HTML, CSS, and JavaScript',
+    'Practical tools that solve everyday problems',
+  ],
+  goals: [
+    'Grow into a skilled software engineer',
+    'Build practical, reliable, and meaningful digital solutions',
+    'Keep learning through consistent practice and finished projects',
+  ],
+  experience: PENDING,
 };
 
 export type SkillStatus = 'learning' | 'foundational';
+export type SkillCategory = 'Programming' | 'Web' | 'Tools';
 
-export const skills: { name: string; status: SkillStatus; blurb: string }[] = [
-  { name: 'Java', status: 'learning', blurb: 'Building console applications; practicing syntax, control flow, and the core libraries.' },
-  { name: 'Object-Oriented Programming', status: 'learning', blurb: 'Classes, inheritance, encapsulation, and designing clean program structure.' },
-  { name: 'Algorithms', status: 'learning', blurb: 'Studying sorting, searching, and common patterns to think more efficiently.' },
-  { name: 'Problem-Solving', status: 'foundational', blurb: 'Breaking problems down, debugging patiently, and reasoning through edge cases.' },
-  { name: 'HTML', status: 'learning', blurb: 'Structuring web pages semantically and accessibly.' },
-  { name: 'CSS', status: 'learning', blurb: 'Styling, responsive layouts, and modern visual design fundamentals.' },
-  { name: 'JavaScript', status: 'learning', blurb: 'Adding interactivity and logic to web pages.' },
-  { name: 'Git', status: 'learning', blurb: 'Version control basics: commits, history, and tracking changes.' },
-  { name: 'GitHub', status: 'learning', blurb: 'Remote repositories, branches, and collaboration workflows.' },
+export const skills: {
+  name: string;
+  status: SkillStatus;
+  category: SkillCategory;
+  blurb: string;
+}[] = [
+  { name: 'Java', status: 'learning', category: 'Programming', blurb: 'Building console applications; practicing syntax, control flow, and the core libraries.' },
+  { name: 'Object-Oriented Programming', status: 'learning', category: 'Programming', blurb: 'Classes, inheritance, encapsulation, and designing clean program structure.' },
+  { name: 'Algorithms', status: 'learning', category: 'Programming', blurb: 'Studying sorting, searching, and common patterns to think more efficiently.' },
+  { name: 'Problem-Solving', status: 'foundational', category: 'Programming', blurb: 'Breaking problems down, debugging patiently, and reasoning through edge cases.' },
+  { name: 'HTML', status: 'learning', category: 'Web', blurb: 'Structuring web pages semantically and accessibly.' },
+  { name: 'CSS', status: 'learning', category: 'Web', blurb: 'Styling, responsive layouts, and modern visual design fundamentals.' },
+  { name: 'JavaScript', status: 'learning', category: 'Web', blurb: 'Adding interactivity and logic to web pages.' },
+  { name: 'Git', status: 'learning', category: 'Tools', blurb: 'Version control basics: commits, history, and tracking changes.' },
+  { name: 'GitHub', status: 'learning', category: 'Tools', blurb: 'Remote repositories, branches, and collaboration workflows.' },
 ];
 
 export type ProjectStatus = 'wip' | 'planned';
 
-export const projects: {
+export type Project = {
+  slug: string;
   title: string;
   status: ProjectStatus;
   description: string;
+  problem: string;
+  solution: string;
   features: string[];
   tech: string[];
-  liveUrl?: string;
-  sourceUrl?: string;
-}[] = [
+  image: { src: string; alt: string };
+  demoUrl?: string;
+  repoUrl?: string;
+  challenges: string;
+  lessons: string;
+};
+
+export const projects: Project[] = [
   {
+    slug: 'smart-age-calculator',
     title: 'Smart Age Calculator',
     status: 'wip',
     description:
       "A program designed to calculate a person's age accurately using their date of birth.",
+    problem:
+      'Working out an exact age by hand, especially across months, days, and leap years, is easy to get wrong.',
+    solution:
+      'A Java program that takes a date of birth, validates the input, and calculates the age in years, months, and days.',
     features: [
       'Years, months, and days calculation',
       'Input validation',
@@ -86,24 +111,46 @@ export const projects: {
       'Clear results',
     ],
     tech: ['Java', 'Conditional statements', 'Date calculations', 'Input validation'],
+    image: {
+      src: 'https://images.pexels.com/photos/6345291/pexels-photo-6345291.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      alt: 'Hand writing in a notebook beside a calculator and laptop',
+    },
+    challenges: PENDING,
+    lessons: PENDING,
   },
   {
+    slug: 'smart-multifunction-calculator',
     title: 'Smart Multifunction Calculator',
     status: 'wip',
     description:
       'A Java calculator designed to perform common mathematical operations with clear results and error handling.',
+    problem:
+      'Everyday calculations need clear results, and a calculator should respond sensibly when the input is invalid.',
+    solution:
+      'A Java console calculator that organizes its operations into methods, handles percentages and arithmetic, and reports errors through exception handling.',
     features: [
       'Arithmetic operations',
       'Percentages',
-      'Supported calculations as development continues',
+      'Additional supported calculations (PENDING)',
     ],
     tech: ['Java', 'Methods', 'Conditional statements', 'Exception handling', 'Scanner input'],
+    image: {
+      src: 'https://images.pexels.com/photos/5877591/pexels-photo-5877591.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      alt: 'Hands using a calculator while writing equations in a notebook',
+    },
+    challenges: PENDING,
+    lessons: PENDING,
   },
   {
+    slug: 'smart-expense-tracker',
     title: 'Smart Expense Tracker',
     status: 'planned',
     description:
       'A planned application for tracking income, expenses, and personal balances.',
+    problem:
+      'Without a clear record of income and spending, it is hard to see where money goes each month.',
+    solution:
+      'A planned Java application that will record transactions, categorize expenses, calculate balances, and summarize spending.',
     features: [
       'Add transactions',
       'Categorize expenses',
@@ -111,6 +158,12 @@ export const projects: {
       'Summarize spending',
     ],
     tech: ['Java', 'Appropriate data structures'],
+    image: {
+      src: 'https://images.pexels.com/photos/5900184/pexels-photo-5900184.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      alt: 'Person writing in a planner while using a calculator for budgeting',
+    },
+    challenges: PENDING,
+    lessons: PENDING,
   },
 ];
 
@@ -150,13 +203,13 @@ export const journey: { phase: string; title: string; description: string }[] = 
     phase: 'Step 01',
     title: 'Learning Programming Fundamentals',
     description:
-      'Building a foundation in programming concepts, logical thinking, and the habits needed to write understandable code.'
+      'Building a foundation in programming concepts, logical thinking, and the habits needed to write understandable code.',
   },
   {
     phase: 'Step 02',
     title: 'Practising Java & OOP',
     description:
-      'Developing Java skills through regular practice with object-oriented programming, methods, control flow, and structured code.'
+      'Developing Java skills through regular practice with object-oriented programming, methods, control flow, and structured code.',
   },
   {
     phase: 'Step 03',
@@ -168,7 +221,7 @@ export const journey: { phase: string; title: string; description: string }[] = 
     phase: 'Step 04',
     title: 'Learning Web Development',
     description:
-      'Exploring HTML, CSS, and JavaScript while creating this portfolio and learning how to present digital work on the web.'
+      'Exploring HTML, CSS, and JavaScript while creating this portfolio and learning how to present digital work on the web.',
   },
   {
     phase: 'Step 05',
