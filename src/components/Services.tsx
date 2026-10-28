@@ -5,7 +5,7 @@ const iconMap = { code: Code2, sparkles: Sparkles, globe: Globe, puzzle: Puzzle 
 
 export default function Services() {
   return (
-    <section id="services" className="section-pad relative bg-navy-900/30">
+    <section className="section-pad relative bg-navy-900/30">
       <div className="container-px">
         <div className="section-intro reveal">
           <p className="eyebrow justify-center">

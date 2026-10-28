@@ -20,7 +20,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
   return (
     <article
-      className="card card-hover sheen-hover reveal-scale group flex flex-col overflow-hidden"
+      className="card card-hover sheen-hover reveal-scale group relative flex flex-col overflow-hidden"
       style={{ ['--reveal-delay' as string]: `${(index % 3) * 90}ms` }}
     >
       <Link to={detailsPath} className="relative block h-48 overflow-hidden border-b border-navy-600/50" aria-label={`Open ${project.title}`}>

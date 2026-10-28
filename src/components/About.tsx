@@ -5,7 +5,7 @@ const icons = [Compass, Hammer, ShieldCheck];
 
 export default function About() {
   return (
-    <section id="about" className="section-pad relative">
+    <section className="section-pad relative">
       <div className="container-px">
         <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
           {/* Left: heading + monogram card */}

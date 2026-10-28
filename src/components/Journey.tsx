@@ -2,7 +2,7 @@ import { journey } from '@/content';
 
 export default function Journey() {
   return (
-    <section id="journey" className="section-pad relative">
+    <section className="section-pad relative">
       <div className="container-px">
         <div className="section-intro reveal">
           <p className="eyebrow justify-center">

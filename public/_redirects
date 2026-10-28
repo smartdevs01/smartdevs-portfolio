@@ -1,0 +1,2 @@
+/* Serve index.html for every route so deep links and refreshes load the app. */
+/*    /index.html   200
