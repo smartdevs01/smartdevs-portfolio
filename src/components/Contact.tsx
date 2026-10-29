@@ -31,9 +31,15 @@ export default function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>('idle');
   const [serverError, setServerError] = useState('');
+  const [honeypot, setHoneypot] = useState('');
 
   async function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
+    if (honeypot.trim()) {
+      setServerError('Your message could not be sent right now. Please email me directly.');
+      setStatus('error');
+      return;
+    }
     const found = validate(values);
     setErrors(found);
     if (Object.keys(found).length > 0) {
@@ -117,6 +123,19 @@ export default function Contact() {
         className="card-lux reveal p-7 sm:p-9"
         style={{ ['--reveal-delay' as string]: '120ms' }}
       >
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="website">Leave this field empty</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </div>
+
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label="Name" id="name" value={values.name} onChange={(v) => update('name', v)} error={errors.name} placeholder="Your name" />
           <Field

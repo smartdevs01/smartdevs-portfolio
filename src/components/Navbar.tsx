@@ -72,7 +72,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-0.5 rounded-full border border-navy-600/40 bg-navy-800/40 px-2 py-1.5 backdrop-blur-md lg:flex">
+        <ul className="hidden items-center gap-0.5 rounded-full border border-navy-600/40 bg-navy-800/40 px-2 py-1.5 backdrop-blur-md xl:flex">
           {navLinks.map((link) => (
             <li key={link.to}>
               <NavLink to={link.to} end={link.to === '/'} className={linkClass}>
@@ -90,7 +90,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="grid h-11 w-11 place-items-center rounded-xl border border-navy-600 bg-navy-800/60 text-ink transition-colors hover:border-gold-400/60 lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-xl border border-navy-600 bg-navy-800/60 text-ink transition-colors hover:border-gold-400/60 xl:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -115,7 +115,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
+        className={`xl:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
           open ? 'max-h-[90vh] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

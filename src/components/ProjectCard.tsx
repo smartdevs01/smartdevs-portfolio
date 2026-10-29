@@ -1,4 +1,4 @@
-import { ArrowRight, Calculator, CalendarDays, Clock3, ReceiptText } from 'lucide-react';
+import { ArrowRight, Calculator, CalendarDays, Clock3, Landmark, ReceiptText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { Project, ProjectStatus } from '@/content';
 
@@ -8,7 +8,8 @@ const statusMeta: Record<ProjectStatus, { label: string; classes: string; Icon: 
 };
 
 const projectIcons: Record<string, typeof Calculator> = {
-  'smart-age-calculator': CalendarDays,
+  'age-calculator': CalendarDays,
+  'loan-calculator': Landmark,
   'smart-multifunction-calculator': Calculator,
   'smart-expense-tracker': ReceiptText,
 };

@@ -15,7 +15,7 @@ const filters: { value: Filter; label: string }[] = [
 export default function ProjectsPage() {
   usePageMeta(
     'Projects',
-    'Java and web projects by Smartdevs, including an age calculator, a multifunction calculator, and a planned expense tracker.'
+    'Java projects by Smartdevs, including an age calculator, a loan calculator, a multifunction calculator, and a planned expense tracker.'
   );
 
   const [filter, setFilter] = useState<Filter>('all');

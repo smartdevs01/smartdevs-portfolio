@@ -15,8 +15,10 @@ export const profile = {
 export const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
+  { label: 'Skills', to: '/skills' },
+  { label: 'Experience', to: '/experience' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Skills & Services', to: '/skills' },
+  { label: 'Education', to: '/education' },
   { label: 'Contact', to: '/contact' },
 ];
 
@@ -24,7 +26,7 @@ export const hero = {
   headline: 'Software Developer & Aspiring Software Engineer',
   subtext:
     "I'm Smartdevs, a passionate learner building my skills in software development, Java programming, and problem-solving. My goal is to create practical, reliable, and meaningful digital solutions while growing into a skilled software engineer.",
-  primaryCta: { label: 'Explore My Projects', to: '/projects' },
+  primaryCta: { label: 'View My Projects', to: '/projects' },
   secondaryCta: { label: 'About Me', to: '/about' },
 };
 
@@ -95,7 +97,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'smart-age-calculator',
+    slug: 'age-calculator',
     title: 'Smart Age Calculator',
     status: 'wip',
     description:
@@ -114,6 +116,28 @@ export const projects: Project[] = [
     image: {
       src: 'https://images.pexels.com/photos/6345291/pexels-photo-6345291.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
       alt: 'Hand writing in a notebook beside a calculator and laptop',
+    },
+    challenges: PENDING,
+    lessons: PENDING,
+  },
+  {
+    slug: 'loan-calculator',
+    title: 'Loan Calculator',
+    status: 'wip',
+    description:
+      'A Java learning project that works out loan repayments from the amount borrowed, the interest rate, and the repayment term.',
+    problem:
+      'Working out loan repayments by hand, including how much interest is paid over time, is tedious and easy to get wrong.',
+    solution:
+      'A Java program that takes the loan details and calculates the repayment amount and the total cost of the loan.',
+    features: [
+      'Repayment amount calculation (PENDING)',
+      'Total interest summary (PENDING)',
+    ],
+    tech: ['Java', 'Apache NetBeans IDE 25', 'Arithmetic and formulas'],
+    image: {
+      src: 'https://images.pexels.com/photos/8292895/pexels-photo-8292895.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      alt: 'Hands analysing mortgage rate documents with a pen and calculator',
     },
     challenges: PENDING,
     lessons: PENDING,
@@ -164,6 +188,52 @@ export const projects: Project[] = [
     },
     challenges: PENDING,
     lessons: PENDING,
+  },
+];
+
+export type ExperienceCategory = 'employment' | 'internship' | 'freelance' | 'independent';
+
+export type ExperienceEntry = {
+  category: ExperienceCategory;
+  title: string;
+  organization: string;
+  start: string;
+  end?: string;
+  description: string;
+  technologies: string[];
+  link?: string;
+};
+
+export const experienceCategories: { value: ExperienceCategory; label: string; empty: string }[] = [
+  { value: 'employment', label: 'Employment', empty: 'No verified employment history has been added yet.' },
+  { value: 'internship', label: 'Internships', empty: 'No internships have been added yet.' },
+  { value: 'freelance', label: 'Freelance Work', empty: 'No freelance client work has been added yet.' },
+  { value: 'independent', label: 'Independent Projects', empty: 'No independent projects have been added yet.' },
+];
+
+// Add verified entries here. Learning exercises belong in education, not employment.
+export const experience: ExperienceEntry[] = [];
+
+export type EducationStatus = 'completed' | 'ongoing';
+
+export type EducationEntry = {
+  institution: string;
+  qualification: string;
+  subject: string;
+  start: string;
+  end?: string;
+  status: EducationStatus;
+  certificateUrl?: string;
+};
+
+// Only verified qualifications should be listed as completed.
+export const education: EducationEntry[] = [
+  {
+    institution: 'Self-directed study',
+    qualification: 'Independent learning',
+    subject: 'Java programming using Apache NetBeans IDE 25',
+    start: PENDING,
+    status: 'ongoing',
   },
 ];
 
