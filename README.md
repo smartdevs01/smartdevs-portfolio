@@ -12,7 +12,7 @@ Welcome to the official repository for my personal portfolio website. Smartdevs 
 
 Smartdevs is my personal portfolio, created to establish my professional online presence and showcase my growth in software development.
 
-The website features a premium dark navy and gold visual identity, a responsive layout, and dedicated sections for my skills, projects, services, and development journey.
+The website features a premium dark navy and gold visual identity, a responsive layout, and dedicated sections for my skills, projects, services, and development journey
 
 ## ✨ Website Features
 
