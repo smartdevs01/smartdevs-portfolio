@@ -2,7 +2,7 @@
 
 **Software Developer & Aspiring Software Engineer**
 
-Welcome to the official repository for my personal portfolio website. Smartdevs showcases my development journey, technical interests, software projects, and progress as I continue learning and building practical solutions.
+Welcome to the official repository for my personal portfolio website. Smartdevs showcases my development journey, technical interests, software projects, and progress as I continue learning and building practical solutions
 
 ## 🌐 Live Website
 
